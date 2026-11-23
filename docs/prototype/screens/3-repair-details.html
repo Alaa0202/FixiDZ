@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FixiDZ · Repair details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.app{display:flex;min-height:100vh;background:#F8FAFC;font-family:Inter,system-ui,sans-serif;color:#0F172A;font-size:14px;line-height:21px}
+.side{width:248px;flex:none;background:#10233F;color:#CBD5E1;display:flex;flex-direction:column;padding:20px 14px;box-sizing:border-box;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-size:20px;font-weight:600;padding:0 8px}
+.logo i{width:36px;height:36px;border-radius:10px;background:#2563EB;display:flex;align-items:center;justify-content:center}
+.shop{background:rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;color:#fff;font-weight:600}
+.shop small{display:block;color:#CBD5E1;font-weight:400;font-size:12px}
+.nav{display:flex;flex-direction:column;gap:4px;flex:1}
+.nav a{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:8px;color:#CBD5E1;text-decoration:none;font-weight:500}
+.nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav a.on{background:#2563EB;color:#fff}
+.nav hr{border:0;border-top:1px solid rgba(255,255,255,.14);margin:8px 0;width:100%}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.top b{font-weight:600}.top span{color:#64748B}
+.av{width:36px;height:36px;border-radius:50%;background:#10233F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bell{width:44px;height:44px;border:0;background:none;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748B;cursor:pointer}
+.bell:hover{background:#F1F5F9}
+.content{padding:28px 32px 40px;display:flex;flex-direction:column;gap:24px;max-width:1360px;width:100%;box-sizing:border-box}
+h1{margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.01em}
+.sub{color:#64748B;margin-top:2px}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.qa button{display:flex;align-items:center;gap:14px;text-align:left;min-height:76px;padding:14px 16px;border-radius:12px;border:1px solid #E2E8F0;background:#fff;font:inherit;color:#0F172A;cursor:pointer}
+.qa button:hover{border-color:#2563EB}
+.qa button b{display:block;font-weight:600}
+.qa button small{display:block;color:#64748B;font-size:12px;line-height:18px}
+.qa button i{width:44px;height:44px;border-radius:10px;background:#DBEAFE;color:#1D4ED8;display:flex;align-items:center;justify-content:center;flex:none}
+.qa button.pri{background:#10233F;border-color:#10233F;color:#fff}
+.qa button.pri small{color:#CBD5E1}
+.qa button.pri i{background:#2563EB;color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:12px}
+.kpi{padding:16px 18px}
+.kpi small{display:block;color:#64748B;font-size:12px;line-height:18px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.kpi strong{display:block;font-size:28px;line-height:36px;font-weight:600;margin:4px 0}
+.kpi strong em{font-style:normal;font-size:14px;color:#64748B;font-weight:500}
+.kpi span{color:#64748B;font-size:12px;line-height:18px}
+.kpi.warn{background:#FEF2F2;border-color:#FECACA}.kpi.warn small,.kpi.warn span,.kpi.warn strong{color:#B91C1C}
+.row{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:stretch}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px 14px;gap:12px}
+.ch h2{margin:0;font-size:16px;line-height:24px;font-weight:600}
+.ch p{margin:0;color:#64748B;font-size:12px;line-height:18px}
+.lnk{color:#1D4ED8;font-weight:600;text-decoration:none;font-size:13px}
+.lnk:hover{text-decoration:underline}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{text-align:left;font-size:11px;line-height:22px;color:#64748B;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:6px 24px;background:#F8FAFC;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0}
+td{padding:14px 24px;border-bottom:1px solid #E2E8F0;font-size:14px}
+tr:last-child td{border-bottom:0}
+td small{display:block;color:#64748B;font-size:12px;line-height:18px}
+td a{color:#1D4ED8;font-weight:600;text-decoration:none}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;line-height:20px;font-weight:600;white-space:nowrap}
+.t-rec{background:#DBEAFE;color:#1D4ED8}.t-dia{background:#E0E7FF;color:#4338CA}.t-wait{background:#FEF3C7;color:#92400E}.t-prog{background:#FFEDD5;color:#C2410C}.t-ready{background:#DCFCE7;color:#15803D}.t-del{background:#E2E8F0;color:#334155}.t-can{background:#FEE2E2;color:#B91C1C}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 24px 24px;flex:1}
+.stat{border:1px solid #E2E8F0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.stat b{font-size:28px;line-height:32px;font-weight:600}
+.stat.total{background:#10233F;border-color:#10233F;color:#fff}
+.stat.total .tag{background:rgba(255,255,255,.16);color:#fff}
+.stk{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 24px}
+.part{border:1px solid #E2E8F0;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.part.out{background:#FEF2F2;border-color:#FECACA}
+.part b{font-weight:600}
+.bar{height:8px;border-radius:99px;background:#E2E8F0;overflow:hidden}
+.bar i{display:block;height:100%;background:#C2410C}
+.part.out .bar i{background:#B91C1C}
+.part small{color:#64748B;font-size:12px;line-height:18px}
+.btn{min-height:44px;padding:0 16px;border-radius:6px;border:1px solid #CBD5E1;background:#fff;font:inherit;font-weight:600;color:#0F172A;cursor:pointer}
+.btn:hover{background:#F1F5F9}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.pk{display:flex;align-items:center;gap:16px;padding:14px 24px;border-top:1px solid #E2E8F0}
+.pk>div{flex:1;min-width:0}.pk b{display:block;font-weight:600}.pk small{color:#64748B;font-size:12px;line-height:18px}
+.call{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px;border:1px solid #CBD5E1;color:#0F172A;font-weight:600;text-decoration:none;background:#fff;white-space:nowrap}
+.call:hover{background:#F1F5F9}
+.days{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;line-height:20px;font-weight:600;background:#FEF3C7;color:#92400E;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.qa2{display:flex;gap:8px;flex-wrap:wrap}
+.qb{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;border:1px solid #CBD5E1;background:#fff;font:inherit;font-weight:600;color:#0F172A;cursor:pointer}
+.qb:hover{border-color:#2563EB}.qb{text-decoration:none}.qb.pri{background:#10233F;border-color:#10233F;color:#fff}
+.sh{display:flex;justify-content:space-between;padding:8px 24px;background:#F8FAFC;border-top:1px solid #E2E8F0;font-size:11px;line-height:20px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748B}
+a.stat{text-decoration:none;color:inherit}a.stat:hover{border-color:#2563EB}
+.lows{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 24px;flex-wrap:wrap}
+.lwl{display:flex;gap:12px;flex-wrap:wrap;flex:1}
+.lw{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #E2E8F0;border-radius:10px}
+.lw.out{background:#FEF2F2;border-color:#FECACA}
+.crumb{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.05em;color:#64748B}.crumb b{color:#1D4ED8;font-weight:600}
+.qb.blue{background:#2563EB;border-color:#2563EB;color:#fff}.qb.blue:hover{background:#1D4ED8}
+.fb{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;padding:16px 24px}
+.fb label{display:flex;flex-direction:column;gap:4px;font-size:11px;line-height:16px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748B}
+.fb select,.srch input{min-height:44px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;font:inherit;color:#0F172A;padding:0 12px}
+.srch{flex:1;min-width:240px;position:relative;display:flex;align-items:center}.srch svg{position:absolute;left:12px;color:#64748B}.srch input{width:100%;padding-left:40px}
+input:focus,select:focus{outline:2px solid #2563EB;outline-offset:1px}
+.scr{max-height:400px;overflow:auto;border-top:1px solid #E2E8F0}.scr th{position:sticky;top:0;z-index:2;border-top:0}
+.who{display:flex;align-items:center;gap:12px}.av2{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.a1{background:#DBEAFE;color:#1D4ED8}.a2{background:#FCE7F3;color:#BE185D}.a3{background:#DCFCE7;color:#15803D}.a4{background:#EDE9FE;color:#6D28D9}
+td b{font-weight:600}.th-r,.td-r{text-align:right}
+.mn{position:relative;display:inline-block}
+.mn summary{list-style:none;width:44px;height:44px;border:1px solid #E2E8F0;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#334155}
+.mn summary::-webkit-details-marker{display:none}.mn summary:hover{background:#F1F5F9}
+.mn[open] summary{background:#DBEAFE;border-color:#2563EB;color:#1D4ED8}
+.mn div{position:absolute;right:0;top:48px;z-index:5;min-width:176px;text-align:left;background:#fff;border:1px solid #E2E8F0;border-radius:8px;box-shadow:0 8px 24px rgba(16,35,63,.16);padding:4px;display:flex;flex-direction:column}
+.mn.up div{top:auto;bottom:48px}
+.mn div a{display:flex;align-items:center;min-height:40px;padding:0 12px;border-radius:6px;color:#0F172A;font-weight:500;text-decoration:none}.mn div a:hover{background:#F1F5F9}
+.ft{padding:12px 24px;border-top:1px solid #E2E8F0;color:#64748B;font-size:12px;line-height:18px}
+.sg{display:flex;max-width:820px;margin:0 auto;counter-reset:s}
+.sx{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;counter-increment:s;min-width:0}
+.sx:not(:first-child)::before{content:"";position:absolute;top:16px;right:50%;width:100%;height:4px;background:#E2E8F0}
+.sx:has(input:checked):not(:first-child)::before,.sx:has(~ .sx input:checked):not(:first-child)::before{background:#16A34A}
+.sx input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer;z-index:2}
+.dot{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid #CBD5E1;color:#64748B;font-weight:600;display:flex;align-items:center;justify-content:center}
+.dot::before{content:counter(s)}
+.sx:has(~ .sx input:checked) .dot{background:#16A34A;border-color:#16A34A;color:#fff}
+.sx:has(~ .sx input:checked) .dot::before{content:"\2713"}
+.sx:has(input:checked) .dot{background:#2563EB;border-color:#2563EB;color:#fff;box-shadow:0 0 0 4px #DBEAFE}
+.sx:hover .dot{border-color:#2563EB}
+.sx:has(input:focus-visible) .dot{outline:2px solid #2563EB;outline-offset:4px}
+.nm{font-size:12px;line-height:18px;font-weight:500;color:#64748B;text-align:center}
+.sx:has(input:checked) .nm{color:#1D4ED8;font-weight:600}
+.sx:has(~ .sx input:checked) .nm{color:#0F172A}
+.dg{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start}
+.dl,.dr{display:flex;flex-direction:column;gap:24px}.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lb{display:flex;align-items:center;gap:8px;font-size:11px;line-height:16px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B}
+.nmb{font-size:18px;line-height:26px;font-weight:600;margin:6px 0 4px}
+.ir{display:flex;align-items:flex-start;gap:10px;color:#475569;margin-top:8px}.ir b{color:#0F172A;font-weight:600}.ir svg{flex:none;margin-top:2px}
+.q1,.q2{border-radius:8px;padding:12px 16px;margin-top:12px;border-left:4px solid #2563EB}
+.q1{background:#F1F5F9}.q2{background:#EFF6FF;border-left-color:#60A5FA}
+.ql{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#64748B;margin-bottom:4px}
+.fin{background:#10233F;color:#fff;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.fr{display:flex;justify-content:space-between;align-items:center;color:#E2E8F0}.fr b{color:#fff;font-weight:600}
+.rb{background:rgba(255,255,255,.08);border-radius:8px;padding:12px}
+.btnp{min-height:48px;border:0;border-radius:8px;background:#2563EB;color:#fff;font:inherit;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}.btnp:hover{background:#1D4ED8}
+.ac{display:flex;align-items:center;gap:14px;padding:14px 16px;text-align:left;width:100%;font:inherit;color:#0F172A;cursor:pointer;background:#fff;border:1px solid #E2E8F0;border-radius:12px}.ac:hover{border-color:#2563EB}.ac{box-sizing:border-box;max-width:100%}
+.ac i{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.ac b{display:block;font-weight:600}.ac small{display:block;color:#64748B;font-size:12px;line-height:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}.f>span{font-size:13px;line-height:20px;font-weight:600;color:#0F172A}
+.hint{font-size:12px;line-height:18px;color:#64748B}
+.in{min-height:44px;width:100%;box-sizing:border-box;border:1px solid #CBD5E1;border-radius:6px;padding:0 12px;font:inherit;color:#0F172A;background:#fff}
+.in.ta{padding:10px 12px;resize:vertical}textarea:focus{outline:2px solid #2563EB;outline-offset:1px}
+.sfx{position:relative;display:flex;align-items:center}.sfx .in{padding-right:44px}.sfx em{position:absolute;right:12px;font-style:normal;font-weight:600;color:#64748B}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+.mo{display:none;position:fixed;inset:0;z-index:50;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+.bd{position:absolute;inset:0;background:rgba(15,23,42,.5);cursor:default}
+.mb{position:relative;background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:100%;overflow:auto;box-shadow:0 24px 64px rgba(16,35,63,.3)}
+.mh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 24px;border-bottom:1px solid #E2E8F0}
+.mt{font-size:18px;line-height:26px;font-weight:600}
+.x{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#64748B;flex:none}.x:hover{background:#F1F5F9}
+.ms{padding:20px 24px;border-bottom:1px solid #E2E8F0}
+.ms h3{margin:0 0 12px;font-size:12px;line-height:20px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748B;display:flex;align-items:center;gap:10px}
+.mf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;flex-wrap:wrap}
+.ro{min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:6px;background:#F1F5F9;font-weight:600}.ro.err{background:#FEE2E2;color:#B91C1C}
+.nw{margin:0;color:#64748B;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:8px;padding:14px 16px}
+.op{font-style:normal;font-weight:400;color:#64748B;font-size:12px;text-transform:none;letter-spacing:0}
+.content:has(#rp:checked) #mp,.content:has(#rw:checked) #mp{display:flex}
+.ac.ov,.btnp.ov{position:relative}.ov input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.ov:has(input:focus-visible){outline:2px solid #2563EB;outline-offset:2px}
+.qb.ov{position:relative}
+.content:has(#rc:checked) #mr{display:flex}
+.paper{background:#fff;border:1px solid #E2E8F0;border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.06);font-size:13px;line-height:20px}
+.pt{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:12px}.pt b{font-size:18px;line-height:26px}.pt span{color:#64748B;font-size:12px}
+.pr{display:flex;justify-content:space-between;font-weight:600;border-top:1px dashed #94A3B8;border-bottom:1px dashed #94A3B8;padding:8px 0;margin-bottom:10px}
+.pl{display:flex;justify-content:space-between;gap:16px;padding:3px 0}.pl span{color:#64748B}.pl b{text-align:right;font-weight:600}
+.paper h4{margin:14px 0 4px;font-size:11px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid #E2E8F0;padding-bottom:4px}
+.fine{margin:16px 0 0;text-align:center;color:#64748B;font-size:12px;border-top:1px dashed #94A3B8;padding-top:12px}
+.rq{color:#B91C1C;font-weight:600}
+.content:has(#rpart:checked) #mpart{display:flex}
+.pi{margin-top:16px;padding:12px 14px;border-radius:8px;background:#F1F5F9;font-weight:600}.pi.ok{background:#DCFCE7;color:#15803D}.pi.warn{background:#FEF3C7;color:#92400E}.pi.err{background:#FEE2E2;color:#B91C1C}
+.btnp:disabled{opacity:.45;cursor:not-allowed}
+@media (max-width:1100px){.dg{grid-template-columns:1fr}}
+@media (max-width:760px){.two{grid-template-columns:1fr}.nm{font-size:11px}}
+@media (max-width:1100px){.row2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.qa{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.app{flex-direction:column}.side{width:100%}.stk{grid-template-columns:1fr}.content{padding:20px 16px}.top{padding:0 16px}}
+.content:has(#re:checked) #me{display:flex}
+#me .mb{max-width:760px;display:flex;flex-direction:column;overflow:hidden}
+#me form{display:flex;flex-direction:column;min-height:0;flex:1}
+#me .mbody{background:#F8FAFC;padding:20px 24px;display:flex;flex-direction:column;gap:16px;overflow:auto;flex:1}
+#me .ec{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:24px}
+#me .eh{margin:0 0 16px;font-size:16px;line-height:24px;font-weight:600}
+#me .mf{border-top:1px solid #E2E8F0;background:#fff}
+#me .or{display:flex;align-items:center;gap:12px;color:#64748B;font-size:12px;line-height:18px;margin:18px 0}#me .or::before,#me .or::after{content:"";flex:1;border-top:1px solid #E2E8F0}
+#me .sfx .sv{position:absolute;left:12px;color:#64748B}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #CBD5E1;border-radius:999px;background:#fff;cursor:pointer;font-weight:500;color:#334155}
+.chip input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.chip:hover{border-color:#2563EB}
+.chip:has(input:checked){background:#DBEAFE;border-color:#2563EB;color:#1D4ED8;font-weight:600}.chip:has(input:checked)::before{content:"\2713";margin-right:8px}
+.chip:has(input:focus-visible){outline:2px solid #2563EB;outline-offset:2px}
+#me:has(:required:invalid) .save{opacity:.45;pointer-events:none}
+@media (max-width:640px){#me .g2{grid-template-columns:1fr}}
+.um{position:relative}.um summary{list-style:none;cursor:pointer;border-radius:50%}.um summary::-webkit-details-marker{display:none}
+.um summary:focus-visible{outline:2px solid #2563EB;outline-offset:2px}.um[open] .av{box-shadow:0 0 0 3px #BFDBFE}
+.um .um-box{position:absolute;right:0;top:46px;z-index:45;width:232px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;box-shadow:0 8px 24px rgba(16,35,63,.16);padding:6px;text-align:left}
+.um .um-who{padding:10px 12px 12px;border-bottom:1px solid #E2E8F0;margin-bottom:6px}.um .um-who b{display:block;font-weight:600;color:#0F172A}.um .um-who small{display:block;color:#64748B;font-size:12px;line-height:18px}
+.um .um-i{display:flex;align-items:center;gap:10px;width:100%;box-sizing:border-box;min-height:44px;padding:0 12px;border:0;border-radius:6px;background:none;font:inherit;font-weight:500;color:#0F172A;text-decoration:none;cursor:pointer;text-align:left}
+.um .um-i:hover{background:#F1F5F9}.um .um-i.out{color:#B91C1C}.um .um-i.out:hover{background:#FEF2F2}
+</style>
+</head><body>
+<div class="app">
+<aside class="side">
+<a class="logo" href="1-dashboard.html" style="text-decoration:none"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"></path></svg></i>FixiDZ</a>
+<div class="shop">Atlas Mobile<small>Alger Centre · Owner</small></div>
+<nav class="nav" aria-label="Main">
+<a href="1-dashboard.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Dashboard</a>
+<a class="on" href="2-repairs-list.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"></path></svg>Repairs</a>
+<a href="6-inventory.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"></path></svg>Inventory</a>
+<a href="5-payments-warranties.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>Payments &amp; Warranties</a>
+<hr>
+<a href="7-reports-analytics.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"></path></svg>Reports &amp; Analytics</a>
+<a href="8-settings.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg>Settings</a>
+</nav>
+</aside>
+<div class="main">
+<header class="top"><div><b>Atlas Mobile</b> <span>· Alger Centre</span></div><div style="display:flex;align-items:center;gap:8px"><button class="bell" aria-label="Notifications"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10 21a2 2 0 0 0 4 0"></path></svg></button><details class="um"><summary aria-label="Account menu"><span class="av">SB</span></summary><div class="um-box" role="menu"><div class="um-who"><b>Samir Boudiaf</b><small>Owner · Atlas Mobile</small></div><a class="um-i" role="menuitem" href="8-settings.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Settings</a><button class="um-i out" role="menuitem" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button></div></details></div></header>
+<div class="content"><input class="sr" type="radio" name="sel" id="r0" checked>
+<div class="hd"><div style="display:flex;align-items:center;gap:16px"><a class="qb" href="2-repairs-list.html" aria-label="Back to repairs" style="padding:0;width:44px;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><div><div class="crumb"><a href="2-repairs-list.html" style="color:inherit;text-decoration:none">REPAIRS</a> › <b>DETAILS</b></div><h1 id="pgT">R-1047 · Samsung Galaxy A52</h1><div class="sub">Received 24 Oct 2026, 09:35 · Assigned to Karim Benali</div></div></div>
+<label class="qb ov" style="cursor:pointer">Edit Repair<input type="radio" name="sel" id="re" aria-label="Edit repair"></label></div>
+<section class="card" style="padding:24px 32px 20px"><div class="sg" role="radiogroup" aria-label="Repair status"><label class="sx"><input type="radio" name="st"><span class="dot"></span><span class="nm">Received</span></label><label class="sx"><input type="radio" name="st" checked><span class="dot"></span><span class="nm">In Progress</span></label><label class="sx"><input type="radio" name="st"><span class="dot"></span><span class="nm">Waiting for Parts</span></label><label class="sx"><input type="radio" name="st"><span class="dot"></span><span class="nm">Ready for Pickup</span></label><label class="sx"><input type="radio" name="st"><span class="dot"></span><span class="nm">Delivered</span></label></div><div class="sub" style="text-align:center;font-size:12px;line-height:18px;margin-top:14px">Click a step to change the repair status</div></section>
+<div class="dg"><div class="dl">
+<div class="two">
+<div class="card" style="padding:20px 24px"><div class="lb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Customer</div><div class="nmb" id="cN">Yacine Benali</div><div class="ir"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span id="cP">0555 42 18 90</span></div><div class="ir"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>yacine.benali@gmail.com</div></div>
+<div class="card" style="padding:20px 24px"><div class="lb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Device</div><div class="nmb" id="dN">Samsung Galaxy A52</div><div class="ir"><span><b>Condition:</b> <span id="dC">Cracked front glass; frame intact; powers on.</span></span></div><div class="ir"><span><b>Accessories:</b> <span id="dA">black silicone case · no charger</span></span></div></div>
+</div>
+<div class="card" style="padding:20px 24px"><div class="lb">Diagnosis</div>
+<div class="q2"><span id="dg">OLED assembly damaged. Mainboard and charging circuit tested normally.</span></div></div>
+<div class="card"><div class="ch"><div class="lb" style="margin-top:4px">Parts to be used</div><label class="lnk ov" style="cursor:pointer;position:relative">+ Add from inventory<input type="radio" name="sel" id="rpart" aria-label="Add a part from inventory"></label></div>
+<div class="tw"><table><thead><tr><th>Part name</th><th>Qty</th><th>Unit price</th><th class="th-r">Total</th></tr></thead><tbody id="ptb"><tr><td>A52 OLED display</td><td>1</td><td>4,200 DA</td><td class="td-r"><b>4,200 DA</b></td></tr></tbody></table></div></div>
+</div>
+<div class="dr">
+<div class="fin"><div class="lb" style="color:#CBD5E1">Financial summary</div>
+<div class="fr"><span>Original estimate</span><b id="fE">12,000 DA</b></div>
+<div class="fr" style="border-top:1px solid rgba(255,255,255,.16);padding-top:14px;align-items:baseline"><span>Final cost</span><b id="fF" style="font-size:28px;line-height:32px">12,500 DA</b></div>
+<div class="fr" style="color:#4ADE80"><span style="color:#4ADE80">Amount paid</span><b id="fP">5,000 DA</b></div>
+<div class="fr rb"><span>Remaining balance</span><b id="fR" style="color:#FBBF24">7,500 DA</b></div>
+<label class="btnp ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>Record Payment<input type="radio" name="sel" id="rp" aria-label="Record payment"></label></div>
+</div></div>
+<div class="mo" id="me" role="dialog" aria-modal="true" aria-label="Edit repair"><label for="r0" class="bd"></label><div class="mb">
+<div class="mh"><div><div class="mt">Edit repair</div><div class="sub">R-1047 · Update the information, then save.</div></div><label for="r0" class="x" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></label></div>
+<form id="ef" onsubmit="return false">
+<div class="mbody">
+<section class="ec"><h2 class="eh">Customer</h2>
+<label class="f"><span>Find a returning customer</span><div class="sfx"><svg class="sv" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input class="in" style="padding-left:40px" type="search" placeholder="Search by name or phone..."></div></label>
+<div class="or">or edit this customer</div>
+<div class="g2"><label class="f"><span>Full name <b class="rq">*</b></span><input class="in" id="eN" type="text" required value="Yacine Benali" placeholder="e.g. Yacine Benali" autocomplete="off"></label>
+<label class="f"><span>Phone number <b class="rq">*</b></span><input class="in" id="eP" type="tel" required pattern="(\s*\d){10}\s*" value="0555 42 18 90" placeholder="0555 12 34 56"><small class="hint">10 digits, Algerian number</small></label></div></section>
+<section class="ec"><h2 class="eh">Device and diagnosis</h2>
+<label class="f"><span>Device <b class="rq">*</b></span><input class="in" id="eD" type="text" required value="Samsung Galaxy A52" placeholder="e.g. Samsung Galaxy A52, iPhone 12, Dell Latitude 5420"></label>
+<label class="f" style="margin-top:16px"><span>Condition when received <i class="op">optional</i></span><textarea class="in ta" id="eC" style="min-height:64px" placeholder="e.g. Cracked glass, frame intact, powers on.">Cracked front glass; frame intact; powers on.</textarea></label>
+<label class="f" style="margin-top:16px"><span>Diagnosis</span><textarea class="in ta" id="eG" style="min-height:88px" placeholder="Write the diagnosis after testing the device...">OLED assembly damaged. Mainboard and charging circuit tested normally.</textarea></label>
+<div class="f" style="margin-top:20px"><span id="eAl">Accessories that come with the device <i class="op">optional</i></span><div class="chips" role="group" aria-labelledby="eAl"><label class="chip"><input type="checkbox" name="eacc" value="Charger">Charger</label><label class="chip"><input type="checkbox" name="eacc" value="Battery">Battery</label><label class="chip"><input type="checkbox" name="eacc" value="Case" checked>Case</label><label class="chip"><input type="checkbox" name="eacc" value="SIM card">SIM card</label><label class="chip"><input type="checkbox" name="eacc" value="Original box">Original box</label></div></div>
+<label class="f" style="margin-top:12px"><span class="sr">Other accessories</span><input class="in" id="eO" type="text" value="Black silicone, no charger" placeholder="Write anything else left with the device, e.g. black silicone case"></label></section>
+<section class="ec"><h2 class="eh">Cost</h2>
+<div class="g2"><label class="f"><span>Original estimate</span><div class="sfx"><input class="in" id="eE" type="number" min="0" step="100" value="12000"><em>DA</em></div></label>
+<label class="f"><span>Final cost</span><div class="sfx"><input class="in" id="eF" type="number" min="0" step="100" value="12500"><em>DA</em></div></label></div>
+<p class="hint" style="margin:8px 0 0">The remaining balance updates automatically from what the customer already paid.</p></section>
+</div>
+<div class="mf"><span class="hint">Fields marked * are required.</span><div style="display:flex;gap:12px"><label for="r0" class="qb" style="cursor:pointer">Cancel</label><button type="button" id="eS" class="btnp save" style="padding:0 24px">Save changes</button></div></div>
+</form>
+</div></div>
+<div class="mo" id="mp" role="dialog" aria-modal="true" aria-label="Record payment"><label for="r0" class="bd"></label><div class="mb">
+<div class="mh"><div><div class="mt">Record payment</div><div class="sub">R-1047 · Samsung Galaxy A52</div></div><label for="r0" class="x" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></label></div>
+<div class="ms"><h3>Payment</h3><div class="g3"><label class="f"><span>Total amount</span><div class="sfx"><input class="in tot" type="number" min="0" step="100" value="12500"><em>DA</em></div></label><label class="f"><span>Paid</span><div class="sfx"><input class="in pd" type="number" min="0" step="100" value="5000"><em>DA</em></div></label><div class="f"><span>Remaining</span><div class="ro">7,500 DA</div></div></div><p class="hint pe" style="color:#B91C1C;margin:8px 0 0" hidden>Paid can’t be higher than the total amount.</p></div>
+<div class="ms"><h3>Warranty <i class="op">optional</i></h3><div class="g2"><label class="f"><span>Starts</span><input class="in" type="date"></label><label class="f"><span>Expires</span><input class="in" type="date"></label></div><label class="f" style="margin-top:16px"><span>Coverage</span><textarea class="in ta" style="min-height:72px" placeholder="e.g. Replacement display defects and installation workmanship."></textarea><small class="hint">Leave empty if there is no warranty.</small></label></div>
+<div class="mf"><label class="qb ov" style="cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print receipt<input type="radio" name="sel" id="rc" aria-label="Print receipt"></label><div style="display:flex;gap:12px"><label for="r0" class="qb" style="cursor:pointer">Cancel</label><button class="btnp" style="padding:0 24px">Save changes</button></div></div>
+</div></div>
+<div class="mo" id="mr" role="dialog" aria-modal="true" aria-label="Receipt preview"><label for="r0" class="bd"></label><div class="mb" style="max-width:460px">
+<div class="mh"><div><div class="mt">Receipt preview</div><div class="sub">One receipt with the payment and the warranty</div></div><label for="r0" class="x" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></label></div>
+<div style="padding:20px 24px;background:#F1F5F9"><div class="paper">
+<div class="pt"><b>FixiDZ</b><span>Atlas Mobile · Alger Centre</span></div>
+<div class="pr"><span>Receipt</span><span>26 Oct 2026</span></div>
+<div class="pl"><span>Repair</span><b>R-1047</b></div><div class="pl"><span>Device</span><b id="rcD">Samsung Galaxy A52</b></div><div class="pl"><span>Customer</span><b id="rcC">Yacine Benali</b></div><div class="pl"><span>Phone</span><b id="rcPh">0555 42 18 90</b></div>
+<h4>Payment</h4><div class="pl"><span>Total amount</span><b id="rcT">12,500 DA</b></div><div class="pl"><span>Paid</span><b id="rcP">5,000 DA</b></div><div class="pl" style="font-size:15px"><span>Remaining</span><b id="rcR">7,500 DA</b></div>
+<h4>Warranty</h4><div id="rcW"><div class="pl"><span>No warranty</span></div></div>
+<p class="fine">Thank you for your trust. Keep this receipt.</p></div></div>
+<div class="mf"><label for="rp" class="qb" style="cursor:pointer">Back to payment</label><button class="btnp" style="padding:0 24px">Print</button></div>
+</div></div>
+<div class="mo" id="mpart" role="dialog" aria-modal="true" aria-label="Add a part to this repair"><label for="r0" class="bd"></label><div class="mb" style="max-width:520px">
+<div class="mh"><div><div class="mt">Add a part to this repair</div><div class="sub">R-1047 · Samsung Galaxy A52</div></div><label for="r0" class="x" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></label></div>
+<div class="ms"><label class="f"><span>Part from inventory <b class="rq">*</b></span><select class="in" id="pp"><option value="">Select a part</option><option value="a52">A52 OLED display · 2 in stock</option><option value="ip11b">iPhone 11 battery · 1 in stock</option><option value="usbc" disabled>USB-C connector · out of stock</option><option value="ip13">iPhone 13 display · 8 in stock</option><option value="ssd">512GB NVMe SSD · 6 in stock</option><option value="paste">Thermal paste 4g · 12 in stock</option></select></label>
+<label class="f" style="margin-top:16px"><span>Quantity <b class="rq">*</b></span><input class="in" id="pq" type="number" min="1" step="1" value="1"></label>
+<div id="pi" class="pi">Choose a part to see the stock.</div>
+<p class="hint" style="margin:10px 0 0">The stock goes down automatically when you add the part. Its cost is already included in the repair price.</p></div>
+<div class="mf"><span></span><div style="display:flex;gap:12px"><label for="r0" class="qb" style="cursor:pointer">Cancel</label><button class="btnp" id="pa" style="padding:0 24px" disabled>Add to repair</button></div></div>
+</div></div>
+</div>
+</div>
+</div>
+<script>(function(){function n(v){v=parseFloat(v);return isNaN(v)?0:v}document.querySelectorAll(".mo").forEach(function(m){var t=m.querySelector(".tot"),p=m.querySelector(".pd"),r=m.querySelector(".ro"),e=m.querySelector(".pe");if(!t||!p)return;function u(){var d=n(t.value)-n(p.value);if(d<0){r.className="ro err";r.textContent="\u2014";e.hidden=false}else{r.className="ro";r.textContent=d.toLocaleString("en-US")+" DA";e.hidden=true}}t.addEventListener("input",u);p.addEventListener("input",u)});document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){var c=document.getElementById("r0");if(c)c.checked=true}})})();</script>
+<script>(function(){var M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];function d(v){var a=v.split("-");return parseInt(a[2],10)+" "+M[parseInt(a[1],10)-1]+" "+a[0]}function f(x){return(Math.max(0,parseFloat(x)||0)).toLocaleString("en-US")+" DA"}function row(l,v){var r=document.createElement("div");r.className="pl";var a=document.createElement("span");a.textContent=l;r.appendChild(a);if(v){var b=document.createElement("b");b.textContent=v;r.appendChild(b)}return r}var rc=document.getElementById("rc");if(!rc)return;rc.addEventListener("change",function(){var m=document.getElementById("mp"),t=m.querySelector(".tot").value,p=m.querySelector(".pd").value,dt=m.querySelectorAll("input[type=date]"),cv=m.querySelector("textarea").value.trim();document.getElementById("rcT").textContent=f(t);document.getElementById("rcP").textContent=f(p);document.getElementById("rcR").textContent=f((parseFloat(t)||0)-(parseFloat(p)||0));var w=document.getElementById("rcW");w.textContent="";if(dt[0].value||dt[1].value||cv){if(dt[0].value)w.appendChild(row("Starts",d(dt[0].value)));if(dt[1].value)w.appendChild(row("Expires",d(dt[1].value)));if(cv)w.appendChild(row("Coverage",cv))}else{w.appendChild(row("No warranty"))}})})();</script>
+<script>(function(){var P={a52:{n:"A52 OLED display",s:2,m:3,c:4200},ip11b:{n:"iPhone 11 battery",s:1,m:3,c:2400},usbc:{n:"USB-C connector",s:0,m:2,c:600},ip13:{n:"iPhone 13 display",s:8,m:3,c:9500},ssd:{n:"512GB NVMe SSD",s:6,m:2,c:5500},paste:{n:"Thermal paste 4g",s:12,m:4,c:500}};var pp=document.getElementById("pp"),pq=document.getElementById("pq"),pi=document.getElementById("pi"),pa=document.getElementById("pa");if(!pp)return;function f(x){return x.toLocaleString("en-US")+" DA"}function upd(){var p=P[pp.value],q=parseInt(pq.value,10);pa.disabled=true;if(!p){pi.className="pi";pi.textContent="Choose a part to see the stock.";return}if(!(q>=1)){pi.className="pi err";pi.textContent="Enter a quantity of 1 or more.";return}if(q>p.s){pi.className="pi err";pi.textContent="Only "+p.s+" in stock.";return}var a=p.s-q;pa.disabled=false;if(a<p.m){pi.className="pi warn";pi.textContent="Stock "+p.s+" \u2192 "+a+" \u00b7 below the minimum of "+p.m}else{pi.className="pi ok";pi.textContent="Stock "+p.s+" \u2192 "+a}}pp.addEventListener("change",upd);pq.addEventListener("input",upd);pa.addEventListener("click",function(){var p=P[pp.value],q=parseInt(pq.value,10);if(!p||!(q>=1)||q>p.s)return;p.s-=q;var o=pp.options[pp.selectedIndex];o.textContent=p.n+" \u00b7 "+(p.s>0?p.s+" in stock":"out of stock");if(p.s===0)o.disabled=true;var tr=document.createElement("tr");[p.n,String(q),f(p.c),f(p.c*q)].forEach(function(t,i){var td=document.createElement("td");if(i===3){td.className="td-r";var b=document.createElement("b");b.textContent=t;td.appendChild(b)}else{td.textContent=t}tr.appendChild(td)});document.getElementById("ptb").appendChild(tr);pp.value="";pq.value=1;upd();document.getElementById("r0").checked=true});upd()})();</script>
+<script>(function(){var $=function(i){return document.getElementById(i)};function n(v){v=parseFloat(v);return isNaN(v)?0:v}function f(x){return Math.round(x).toLocaleString("en-US")+" DA"}
+var form=$("ef");if(!form)return;
+$("eS").addEventListener("click",function(){if(!form.checkValidity()){form.reportValidity();return}
+var name=$("eN").value.trim(),ph=$("eP").value.trim().replace(/\s+/g," "),dev=$("eD").value.trim();
+var digits=ph.replace(/\D/g,"");ph=digits.replace(/(\d{4})(\d{2})(\d{2})(\d{2})/,"$1 $2 $3 $4");
+var cond=$("eC").value.trim(),dg=$("eG").value.trim(),est=n($("eE").value),fin=n($("eF").value);
+var acc=[].map.call(form.querySelectorAll("input[name=eacc]:checked"),function(c){return c.value});var o=$("eO").value.trim();if(o)acc.push(o);
+$("cN").textContent=name;$("cP").textContent=ph;$("dN").textContent=dev;
+$("dC").textContent=cond||"Not specified";$("dA").textContent=acc.length?acc.join(" · "):"None";
+$("dg").textContent=dg||"No diagnosis yet.";
+var t="R-1047 \u00b7 "+dev;$("pgT").textContent=t;
+document.querySelectorAll(".mh .sub").forEach(function(e){if(e.textContent.indexOf("R-1047 \u00b7")===0&&e.closest("#mp,#mpart"))e.textContent=t});
+$("rcD").textContent=dev;$("rcC").textContent=name;$("rcPh").textContent=ph;
+var paid=n(($("fP").textContent||"").replace(/[^\d.]/g,""));
+$("fE").textContent=f(est);$("fF").textContent=f(fin);$("fR").textContent=f(Math.max(0,fin-paid));
+var tot=document.querySelector("#mp .tot");if(tot){tot.value=fin;tot.dispatchEvent(new Event("input"))}
+$("r0").checked=true});
+})();</script>
+<script>(function(){var m=document.querySelector(".um");if(!m)return;document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&m.open){m.open=false;m.querySelector("summary").focus()}})})();</script>
+<script src="repair-store.js"></script><script src="prototype.js"></script><script src="app.js"></script></body></html>

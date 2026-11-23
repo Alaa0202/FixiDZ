@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FixiDZ · Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.app{display:flex;min-height:100vh;background:#F8FAFC;font-family:Inter,system-ui,sans-serif;color:#0F172A;font-size:14px;line-height:21px}
+.side{width:248px;flex:none;background:#10233F;color:#CBD5E1;display:flex;flex-direction:column;padding:20px 14px;box-sizing:border-box;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-size:20px;font-weight:600;padding:0 8px}
+.logo i{width:36px;height:36px;border-radius:10px;background:#2563EB;display:flex;align-items:center;justify-content:center}
+.shop{background:rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;color:#fff;font-weight:600}
+.shop small{display:block;color:#CBD5E1;font-weight:400;font-size:12px}
+.nav{display:flex;flex-direction:column;gap:4px;flex:1}
+.nav a{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:8px;color:#CBD5E1;text-decoration:none;font-weight:500}
+.nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav a.on{background:#2563EB;color:#fff}
+.nav hr{border:0;border-top:1px solid rgba(255,255,255,.14);margin:8px 0;width:100%}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;background:#fff;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.top b{font-weight:600}.top span{color:#64748B}
+.av{width:36px;height:36px;border-radius:50%;background:#10233F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bell{width:44px;height:44px;border:0;background:none;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748B;cursor:pointer}
+.bell:hover{background:#F1F5F9}
+.content{padding:28px 32px 40px;display:flex;flex-direction:column;gap:24px;max-width:1360px;width:100%;box-sizing:border-box}
+h1{margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.01em}
+.sub{color:#64748B;margin-top:2px}
+.qa{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.qa .qi{display:flex;align-items:center;gap:14px;text-align:left;min-height:76px;padding:14px 16px;border-radius:12px;border:1px solid #E2E8F0;background:#fff;font:inherit;color:#0F172A;cursor:pointer}
+.qa .qi:hover{border-color:#2563EB}
+.qa .qi b{display:block;font-weight:600}
+.qa .qi small{display:block;color:#64748B;font-size:12px;line-height:18px}
+.qa .qi i{width:44px;height:44px;border-radius:10px;background:#DBEAFE;color:#1D4ED8;display:flex;align-items:center;justify-content:center;flex:none}
+.qa .qi.pri{background:#10233F;border-color:#10233F;color:#fff}
+.qa .qi.pri small{color:#CBD5E1}
+.qa .qi.pri i{background:#2563EB;color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:12px}
+.kpi{padding:16px 18px}
+.kpi small{display:block;color:#64748B;font-size:12px;line-height:18px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.kpi strong{display:block;font-size:28px;line-height:36px;font-weight:600;margin:4px 0}
+.kpi strong em{font-style:normal;font-size:14px;color:#64748B;font-weight:500}
+.kpi span{color:#64748B;font-size:12px;line-height:18px}
+.kpi.warn{background:#FEF2F2;border-color:#FECACA}.kpi.warn small,.kpi.warn span,.kpi.warn strong{color:#B91C1C}
+.row{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:stretch}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px 14px;gap:12px}
+.ch h2{margin:0;font-size:16px;line-height:24px;font-weight:600}
+.ch p{margin:0;color:#64748B;font-size:12px;line-height:18px}
+.lnk{color:#1D4ED8;font-weight:600;text-decoration:none;font-size:13px}
+.lnk:hover{text-decoration:underline}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{text-align:left;font-size:11px;line-height:22px;color:#64748B;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:6px 24px;background:#F8FAFC;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0}
+td{padding:14px 24px;border-bottom:1px solid #E2E8F0;font-size:14px}
+tr:last-child td{border-bottom:0}
+td small{display:block;color:#64748B;font-size:12px;line-height:18px}
+td a{color:#1D4ED8;font-weight:600;text-decoration:none}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;line-height:20px;font-weight:600;white-space:nowrap}
+.t-rec{background:#DBEAFE;color:#1D4ED8}.t-dia{background:#E0E7FF;color:#4338CA}.t-wait{background:#FEF3C7;color:#92400E}.t-prog{background:#FFEDD5;color:#C2410C}.t-ready{background:#DCFCE7;color:#15803D}.t-del{background:#E2E8F0;color:#334155}.t-can{background:#FEE2E2;color:#B91C1C}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 24px 24px;flex:1}
+.stat{border:1px solid #E2E8F0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.stat b{font-size:28px;line-height:32px;font-weight:600}
+.stat.total{background:#10233F;border-color:#10233F;color:#fff}
+.stat.total .tag{background:rgba(255,255,255,.16);color:#fff}
+.stk{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 24px}
+.part{border:1px solid #E2E8F0;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.part.out{background:#FEF2F2;border-color:#FECACA}
+.part b{font-weight:600}
+.bar{height:8px;border-radius:99px;background:#E2E8F0;overflow:hidden}
+.bar i{display:block;height:100%;background:#C2410C}
+.part.out .bar i{background:#B91C1C}
+.part small{color:#64748B;font-size:12px;line-height:18px}
+.btn{min-height:44px;padding:0 16px;border-radius:6px;border:1px solid #CBD5E1;background:#fff;font:inherit;font-weight:600;color:#0F172A;cursor:pointer}
+.btn:hover{background:#F1F5F9}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.pk{display:flex;align-items:center;gap:16px;padding:14px 24px;border-top:1px solid #E2E8F0}
+.pk>div{flex:1;min-width:0}.pk b{display:block;font-weight:600}.pk small{color:#64748B;font-size:12px;line-height:18px}
+.call{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px;border:1px solid #CBD5E1;color:#0F172A;font-weight:600;text-decoration:none;background:#fff;white-space:nowrap}
+.call:hover{background:#F1F5F9}
+.days{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;line-height:20px;font-weight:600;background:#FEF3C7;color:#92400E;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.qa2{display:flex;gap:8px;flex-wrap:wrap}
+.qb{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;border:1px solid #CBD5E1;background:#fff;font:inherit;font-weight:600;color:#0F172A;cursor:pointer}
+.qb:hover{border-color:#2563EB}.qb.pri{background:#10233F;border-color:#10233F;color:#fff}
+.sh{display:flex;justify-content:space-between;padding:8px 24px;background:#F8FAFC;border-top:1px solid #E2E8F0;font-size:11px;line-height:20px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748B}
+a.stat{text-decoration:none;color:inherit}a.stat:hover{border-color:#2563EB}
+.lows{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 24px;flex-wrap:wrap}
+.lwl{display:flex;gap:12px;flex-wrap:wrap;flex:1}
+.lw{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #E2E8F0;border-radius:10px}
+.lw.out{background:#FEF2F2;border-color:#FECACA}
+@media (max-width:1100px){.row2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.qa{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.app{flex-direction:column}.side{width:100%}.stk{grid-template-columns:1fr}.content{padding:20px 16px}.top{padding:0 16px}}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}.f>span{font-size:13px;line-height:20px;font-weight:600;color:#0F172A}
+.hint{font-size:12px;line-height:18px;color:#64748B}
+.in{min-height:44px;width:100%;box-sizing:border-box;border:1px solid #CBD5E1;border-radius:6px;padding:0 12px;font:inherit;color:#0F172A;background:#fff}
+.in.ta{padding:10px 12px;resize:vertical}textarea:focus{outline:2px solid #2563EB;outline-offset:1px}
+.sfx{position:relative;display:flex;align-items:center}.sfx .in{padding-right:44px}.sfx em{position:absolute;right:12px;font-style:normal;font-weight:600;color:#64748B}
+.btnp{min-height:44px;border:0;border-radius:8px;background:#2563EB;color:#fff;font:inherit;font-weight:600;cursor:pointer}.btnp:hover{background:#1D4ED8}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+.mo{display:none;position:fixed;inset:0;z-index:50;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+.bd{position:absolute;inset:0;background:rgba(15,23,42,.5);cursor:default}
+.mb{position:relative;background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:100%;overflow:auto;box-shadow:0 24px 64px rgba(16,35,63,.3)}
+.mh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 24px;border-bottom:1px solid #E2E8F0}
+.mt{font-size:18px;line-height:26px;font-weight:600}
+.x{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#64748B;flex:none}.x:hover{background:#F1F5F9}
+.ms{padding:20px 24px;border-bottom:1px solid #E2E8F0}
+.ms h3{margin:0 0 12px;font-size:12px;line-height:20px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#64748B;display:flex;align-items:center;gap:10px}
+.mf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;flex-wrap:wrap}
+.rq{color:#B91C1C;font-weight:600}.op{font-style:normal;font-weight:400;color:#64748B;font-size:12px;text-transform:none;letter-spacing:0}
+.mo:has(:required:invalid) .save{opacity:.45;pointer-events:none}
+.content:has(#ra:checked) #ma{display:flex}
+.qa .qi{text-decoration:none}.qa a.qi{box-sizing:border-box}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+a.kpi{display:block;text-decoration:none;color:inherit}a.kpi:hover{border-color:#2563EB}a.stat{text-decoration:none;color:inherit}
+.um{position:relative}.um summary{list-style:none;cursor:pointer;border-radius:50%}.um summary::-webkit-details-marker{display:none}
+.um summary:focus-visible{outline:2px solid #2563EB;outline-offset:2px}.um[open] .av{box-shadow:0 0 0 3px #BFDBFE}
+.um .um-box{position:absolute;right:0;top:46px;z-index:45;width:232px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;box-shadow:0 8px 24px rgba(16,35,63,.16);padding:6px;text-align:left}
+.um .um-who{padding:10px 12px 12px;border-bottom:1px solid #E2E8F0;margin-bottom:6px}.um .um-who b{display:block;font-weight:600;color:#0F172A}.um .um-who small{display:block;color:#64748B;font-size:12px;line-height:18px}
+.um .um-i{display:flex;align-items:center;gap:10px;width:100%;box-sizing:border-box;min-height:44px;padding:0 12px;border:0;border-radius:6px;background:none;font:inherit;font-weight:500;color:#0F172A;text-decoration:none;cursor:pointer;text-align:left}
+.um .um-i:hover{background:#F1F5F9}.um .um-i.out{color:#B91C1C}.um .um-i.out:hover{background:#FEF2F2}
+</style>
+</head><body>
+<div class="app">
+<aside class="side">
+<a class="logo" href="1-dashboard.html" style="text-decoration:none"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"></path></svg></i>FixiDZ</a>
+<div class="shop">Atlas Mobile<small>Alger Centre · Owner</small></div>
+<nav class="nav" aria-label="Main">
+<a class="on" href="1-dashboard.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Dashboard</a>
+<a href="2-repairs-list.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"></path></svg>Repairs</a>
+<a href="6-inventory.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"></path></svg>Inventory</a>
+<a href="5-payments-warranties.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>Payments &amp; Warranties</a>
+<hr>
+<a href="7-reports-analytics.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"></path></svg>Reports &amp; Analytics</a>
+<a href="8-settings.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg>Settings</a>
+</nav>
+</aside>
+<div class="main">
+<header class="top"><div><b>Atlas Mobile</b> <span>· Alger Centre</span></div><div style="display:flex;align-items:center;gap:8px"><button class="bell" aria-label="Notifications"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10 21a2 2 0 0 0 4 0"></path></svg></button><details class="um"><summary aria-label="Account menu"><span class="av">SB</span></summary><div class="um-box" role="menu"><div class="um-who"><b>Samir Boudiaf</b><small>Owner · Atlas Mobile</small></div><a class="um-i" role="menuitem" href="8-settings.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Settings</a><button class="um-i out" role="menuitem" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button></div></details></div></header>
+<div class="content"><input class="sr" type="radio" name="sel" id="r0" checked><input class="sr" type="radio" name="sel" id="ra">
+<div><h1>Your shop, at a glance</h1><div class="sub">Monday, 26 October · Here’s what needs your attention today.</div></div>
+<section class="qa" aria-label="Quick actions">
+<a class="qi pri" href="4-new-repair.html"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i><span><b>New Repair</b><small>Register a new device</small></span></a>
+<button class="qi" type="button" onclick="document.getElementById('ra').checked=true"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg></i><span><b>Add Part</b><small>Add a spare part</small></span></button>
+</section>
+<section class="kpis" aria-label="Key figures">
+<a class="card kpi" href="2-repairs-list.html"><small>Active repairs</small><strong>—</strong><span>Includes ready repairs</span></a>
+<a class="card kpi" href="2-repairs-list.html"><small>Ready for pickup</small><strong>—</strong><span>Customers can collect today</span></a>
+<a class="card kpi" href="5-payments-warranties.html"><small>Collected today</small><strong>— <em>DA</em></strong><span>Actual recorded payments</span></a>
+<a class="card kpi" href="5-payments-warranties.html"><small>Outstanding balances</small><strong>— <em>DA</em></strong><span>Finalized repairs</span></a>
+<a class="card kpi warn" href="6-inventory.html" style="background-color:#FEE2E2;border-color:#FCA5A5"><small>Parts need attention</small><strong>—</strong><span>Low and out-of-stock parts</span></a>
+</section>
+<section class="row">
+<div class="card"><div class="ch"><div><h2>Recent repairs</h2><p>The latest activity across your workbench</p></div><a class="lnk" href="2-repairs-list.html">View all repairs →</a></div>
+<div class="tw"><table><thead><tr><th>Repair</th><th>Customer</th><th>Device</th><th>Status</th><th>Received</th><th>Cost</th></tr></thead><tbody></tbody></table></div></div>
+<div class="card" style="display:flex;flex-direction:column"><div class="ch"><div><h2>Repair status overview</h2><p>Counts from saved repairs</p></div></div>
+<div class="stats">
+<a class="stat" href="2-repairs-list.html"><span class="tag t-rec" style="align-self:flex-start">Received</span><b>—</b></a>
+<a class="stat" href="2-repairs-list.html"><span class="tag t-prog" style="align-self:flex-start">In Progress</span><b>—</b></a>
+<a class="stat" href="2-repairs-list.html"><span class="tag t-wait" style="align-self:flex-start">Waiting for Parts</span><b>—</b></a>
+<a class="stat" href="2-repairs-list.html"><span class="tag t-ready" style="align-self:flex-start">Ready for Pickup</span><b>—</b></a>
+<a class="stat" href="2-repairs-list.html"><span class="tag t-del" style="align-self:flex-start">Delivered</span><b>—</b></a>
+</div></div>
+</section>
+<section class="card" style="border-color:#FECACA"><div class="ch"><div><h2 style="color:#B91C1C">Low-stock alerts</h2><p>Replenish these parts to avoid delays</p></div><a class="lnk" href="6-inventory.html">Open inventory →</a></div>
+<div class="stk">
+<div class="part out"><div style="display:flex;justify-content:space-between;align-items:center"><b>—</b><span class="tag t-can">Low stock</span></div><div class="bar"><i style="width:0%"></i></div><small>—</small></div>
+</div></section>
+<div class="mo" id="ma" role="dialog" aria-modal="true" aria-label="Add spare part"><label for="r0" class="bd"></label><div class="mb">
+<div class="mh"><div><div class="mt">Add spare part</div><div class="sub">Fill in the information about the part</div></div><label for="r0" class="x" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></label></div>
+<div class="ms"><h3>Part information</h3>
+<label class="f"><span>Part name <b class="rq">*</b></span><input class="in" type="text" required value="" placeholder="e.g. iPhone 13 Pro OLED screen"></label>
+<label class="f" style="margin-top:16px"><span>Category <b class="rq">*</b></span><select class="in" required><option value="">Select a category</option><option>Screens</option><option>Batteries</option><option>Connectors</option><option>Storage</option><option>Consumables</option><option>Other</option></select></label>
+<label class="f" style="margin-top:16px"><span>Description <i class="op">optional</i></span><textarea class="in ta" style="min-height:64px" placeholder="Quality level (OEM, AAA), colour, notes..."></textarea></label></div>
+<div class="ms"><h3>Stock and cost</h3><div class="g3">
+<label class="f"><span>In stock <b class="rq">*</b></span><input class="in" type="number" min="0" step="1" required value="" placeholder="0"></label>
+<label class="f"><span>Minimum <b class="rq">*</b></span><input class="in" type="number" min="0" step="1" required value="" placeholder="3"></label>
+<label class="f"><span>Unit cost <b class="rq">*</b></span><div class="sfx"><input class="in" type="number" min="0" step="100" required value="" placeholder="0"><em>DA</em></div></label></div>
+<p class="hint" style="margin:8px 0 0">How many you have right now. A warning shows when stock goes below the minimum.</p></div>
+<div class="mf"><span class="hint">Fill in all fields marked * to save.</span><div style="display:flex;gap:12px"><label for="r0" class="qb" style="cursor:pointer">Cancel</label><button class="btnp save" style="padding:0 24px">Save part</button></div></div>
+</div>
+</div>
+</div>
+<script>document.addEventListener("keydown",function(e){if(e.key==="Escape"){var c=document.getElementById("r0");if(c)c.checked=true}});</script>
+<script>(function(){var m=document.querySelector(".um");if(!m)return;document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&m.open){m.open=false;m.querySelector("summary").focus()}})})();</script>
+<script src="repair-store.js"></script><script src="prototype.js"></script><script src="app.js"></script></body></html>
