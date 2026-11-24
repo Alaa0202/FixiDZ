@@ -11,7 +11,7 @@ Software Engineering course project.
 | Narimene Hamgani| Developer |
 | Manar Merah | Developer |
 | Saci Midoune | Developer |
-| Mohibdine Talhi | Developer |
+| Mohibddine Talhi | Developer |
 
 ## Features
 
